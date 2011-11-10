@@ -1,6 +1,7 @@
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit
+bindkey -e
 
 # ls colors
 autoload colors; colors
@@ -9,7 +10,7 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 nprom () {
   setopt prompt_subst
-  setopt transient_rprompt
+#  setopt transient_rprompt
   case ${UID} in
     0)
       PROMPT="%{$fg_bold[green]%}%m%{$fg_bold[red]%}#%{$reset_color%} "
@@ -32,12 +33,18 @@ setopt list_packed
 setopt auto_menu
 
 # history
-setopt share_history
-setopt append_history
 setopt hist_ignore_all_dups
-setopt hist_ignore_dups
-setopt hist_save_no_dups
+setopt hist_ignore_space
+setopt share_history
 setopt extended_history
+HISTFILE=$HOME/.zhistory
+HISTSIZE=100000
+SAVEHIST=100000
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^n" history-beginning-search-forward-end
 
 export EDITOR='vim'
 export LANG='ja_JP.UTF-8'
@@ -65,8 +72,9 @@ alias reload='source ~/.zshrc'
 alias be="bundle exec"
 alias bo="bundle open"
 
-[[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm"
-
 if [ -e ~/.zshrc_specific ]; then
   source ~/.zshrc_specific
 fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
