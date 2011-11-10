@@ -20,7 +20,7 @@ nprom () {
       PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
       ;;
   esac
-  RPROMPT="%{$fg_bold[white]%}[%{$reset_color%}%{$fg[cyan]%}%~%{$reset_color%}%{$fg_bold[white]%}]%{$reset_color%}"
+  RPROMPT="%{$fg_bold[white]%}[%~%]]%{$reset_color%}"
   SPROMPT="%{$fg_bold[red]%}correct%{$reset_color%}: %R -> %r ? "
 }
 nprom
