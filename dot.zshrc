@@ -42,9 +42,9 @@ if [ -x /usr/bin/dircolors ]; then
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 fi
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -aGlF'
+alias la='ls -GA'
+alias l='ls -GCF'
 alias tf='tail -f'
 alias psa='ps aux'
 alias reload='source ~/.zshrc'
