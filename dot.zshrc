@@ -1,6 +1,30 @@
-autoload -U compinit
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+autoload -Uz compinit
 compinit
-PROMPT=$'%B%F{green}%n@%M%f %F{blue}%~%f%b%1(v| %F{green}%1v%f|)\n%B%F{blue}$%f%b '
+
+nprom () {
+  setopt prompt_subst
+  setopt transient_rprompt
+  case ${UID} in
+    0)
+      PROMPT="%{$fg_bold[green]%}%m%{$fg_bold[red]%}#%{$reset_color%} "
+      PROMPT2="%{$fg[magenta]%}%_%{$reset_color%}%{$fg_bold[white]%}>>%{$reset_color%} "
+      ;;
+    *)
+      PROMPT="%{$fg_bold[cyan]%}%m%{$fg_bold[white]%}%%%{$reset_color%} "
+      PROMPT2="%{$fg[magenta]%}%_%{$reset_color%}%{$fg_bold[white]%}>>%{$reset_color%} "
+      ;;
+  esac
+  RPROMPT="%{$fg_bold[white]%}[%{$reset_color%}%{$fg[cyan]%}%~%{$reset_color%}%{$fg_bold[white]%}]%{$reset_color%}"
+  SPROMPT="%{$fg_bold[red]%}correct%{$reset_color%}: %R -> %r ? "
+}
+nprom
+
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt correct
+setopt list_packed
+setopt auto_menu
 
 export EDITOR='vim'
 export LANG='ja_JP.UTF-8'

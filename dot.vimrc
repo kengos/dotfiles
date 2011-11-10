@@ -46,7 +46,6 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'wincent/Command-T'
 
 filetype plugin indent on
 
@@ -82,7 +81,6 @@ set showmode
 set smartcase
 set smartindent
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%=%l,%c%v%8p
-set expandtab tabstop=2 shiftwidth=2
 set t_Co=256
 set ttimeoutlen=0
 set virtualedit=block
@@ -94,6 +92,9 @@ noremap <silent> j gj
 noremap <silent> k gk
 noremap <silent> gj j
 noremap <silent> gk k
+
+nnoremap + <C-w>+
+nnoremap - <C-w>-
 
 cnoremap <C-a> <Home>
 cnoremap <C-x> <C-r>=expand('%:p:h')<CR>/
@@ -109,6 +110,7 @@ autocmd InsertLeave * set nopaste
 
 " 以前開いていたときのカーソル位置を復元する
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 " 全角空白と行末の空白の色を変える
 highlight WideSpace ctermbg=blue guibg=blue
 highlight EOLSpace ctermbg=red guibg=red
@@ -124,15 +126,14 @@ autocmd WinEnter * call s:HighlightSpaces()
 " 挿入モード時、ステータスラインの色を変える
 autocmd InsertEnter * highlight StatusLine ctermfg=red
 autocmd InsertLeave * highlight StatusLine ctermfg=white
+
 " 自動的に QuickFix リストを表示する
 autocmd QuickFixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
 autocmd QuickFixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
 
 let g:netrw_altv = 1
-let g:vimwiki_home = '~/vimwiki/'
+let g:vimwiki_home = '~/Public/Drop Box/vimwiki/'
 let g:CommandTMaxHeight = 20
-
-nnoremap <Esc>t :CommandT<CR>
 
 " FuzzyFinder
 let g:fuf_modesDisable = []
@@ -143,6 +144,8 @@ let g:fuf_keyOpenSplit = '<C-s>'
 nnoremap <Space>ff :FufMruFile<CR>
 nnoremap <Space>fc :FufMruCmd<CR>
 nnoremap <Space>fh :FufHelp<CR>
+
 nnoremap <Space>ra :SweetVimRspecRunFile<CR>
 nnoremap <Space>rf :SweetVimRspecRunFocused<CR>
 nnoremap <Space>rr :SweetVimRspecRunPrevious<CR>
+
