@@ -3,7 +3,7 @@ IRB.conf.update(
   :PROMPT_MODE => :SIMPLE
 )
 
-%w(irb/completion pp rubygems what_methods utility_belt).each do |l|
+%w(irb/completion pp rubygems what_methods utility_belt interactive_rspec).each do |l|
   begin
     require l
   rescue LoadError
