@@ -1,40 +1,33 @@
 # Git function
-function _set_rprompt_git() {
+function _set_git_branch() {
   local git_branch st color
   git_branch="${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}"
   if [ $? != '0' ]; then
-    RPROMPT="%{$fg_bold[white]%}[%~%]]%{${reset_color%}"
-  else
-    st=`git status 2> /dev/null`
-    if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-      color=%F{green}
-    elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-      color=%F{yellow}
-    elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-      color=%B%F{blue}
-    else
-      color=%B%F{red}
-    fi
-    RPROMPT="%{$fg_bold[white]%}[%~%]] [%{$color%}${git_branch}%{${reset_color}%}]"
+    return
   fi
+  st=`git status 2> /dev/null`
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    color=%F{green}
+  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+    color=%F{yellow}
+  elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
+    color=%F{blue}
+  else
+    color=%F{red}
+  fi
+  echo " - [%{$color%}${git_branch}%f]"
 }
 
-# PROMPT function
+function _set_left_prompt(){
+  PROMPT=$'[%n@%m] - [%F{magenta}%~%f%1(v| %F{green}%1v%f|)]`_set_git_branch`\n$ '
+}
+
 function _set_prompt() {
-  case ${UID} in
-    0)
-      PROMPT="%{$fg_bold[green]%}%m%{$fg_bold[red]%}#%{$reset_color%} "
-      PROMPT2="%{$fg[magenta]%}%_%{$reset_color%}%{$fg_bold[white]%}>>%{$reset_color%} "
-      ;;
-    *)
-      # 左側
-      PROMPT="%{${fg[cyan]}%}[%n@%m]%{${reset_color}%}$ "
-      # 左側(2行目以降)
-      PROMPT2="%B%{${fg[blue]}%}%_$%{${reset_color}%}%b "
-      ;;
-  esac
-  _set_rprompt_git
-  #RPROMPT="%{$fg_bold[white]%}[%~%]]`rprompt-git-current-branch`"
+  _set_left_prompt
+  # 左側(2行目以降)
+  PROMPT2="%B%{${fg[blue]}%}%_$%{${reset_color}%}%b "
+  # 右側
+  #RPROMPT=""
   # コマンドミス時
   SPROMPT="%{$fg_bold[red]%}correct%{$reset_color%}: %R -> %r ? "
 }
@@ -60,24 +53,25 @@ setopt pushd_ignore_dups
 setopt correct
 setopt list_packed
 setopt auto_menu
+## prompt
 setopt prompt_subst
+setopt prompt_percent
+setopt transient_rprompt
+## history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
 setopt extended_history
-# history
-HISTFILE=$HOME/.zhistory
-HISTSIZE=100000
-SAVEHIST=100000
+# history settings
+histfile=$home/.zhistory
+histsize=100000
+savehist=100000
 autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^n" history-beginning-search-forward-end
 
 # prompt setting  
 typeset -ga chpwd_functions
-chpwd_functions+=_set_prompt
+chpwd_functions+=_set_left_prompt
+_set_prompt
 
 
 # Alias Settings
