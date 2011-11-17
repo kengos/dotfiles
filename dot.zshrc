@@ -1,6 +1,4 @@
 # Git function
-typeset -ga chpwd_functions
-typeset -ga preexec_functions
 function _set_rprompt_git() {
   local git_branch st color
   git_branch="${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}"
@@ -20,33 +18,9 @@ function _set_rprompt_git() {
     RPROMPT="%{$fg_bold[white]%}[%~%]] [%{$color%}${git_branch}%{${reset_color}%}]"
   fi
 }
-chpwd_functions+=_set_rprompt_git
-preexec_functions+=_set_rprompt_git
-#function rprompt-git-current-branch {
-#  local name st color
-#  if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
-#    return
-#  fi
-#  name=`git branch 2> /dev/null | grep '^\*' | cut -b 3-`
-#  if [[ -z $name ]]; then
-#    return
-#  fi
-#
-#  st=`git status 2> /dev/null`
-#  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-#    color=%F{green}
-#  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-#    color=%F{yellow}
-#  elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-#    color=%B%F{red}
-#  else
-#    color=%B%F{red}
-#  fi
-#  echo "[%{$color%}%{$name%}%{$reset_color%}]"
-#}
 
 # PROMPT function
-function nprom () {
+function _set_prompt() {
   case ${UID} in
     0)
       PROMPT="%{$fg_bold[green]%}%m%{$fg_bold[red]%}#%{$reset_color%} "
@@ -56,9 +30,10 @@ function nprom () {
       # 左側
       PROMPT="%{${fg[cyan]}%}[%n@%m]%{${reset_color}%}$ "
       # 左側(2行目以降)
-      PROMPT2="%B%{${fg[blue]}%}%_$%{${reset_color}%}%b"
+      PROMPT2="%B%{${fg[blue]}%}%_$%{${reset_color}%}%b "
       ;;
   esac
+  _set_rprompt_git
   #RPROMPT="%{$fg_bold[white]%}[%~%]]`rprompt-git-current-branch`"
   # コマンドミス時
   SPROMPT="%{$fg_bold[red]%}correct%{$reset_color%}: %R -> %r ? "
@@ -100,8 +75,11 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
-# prompt setting
-nprom
+# prompt setting  
+typeset -ga chpwd_functions
+typeset -ga preexec_functions
+chpwd_functions+=_set_rprompt_git
+preexec_functions+=_set_rprompt_git
 
 # Alias Settings
 alias v='vim'
