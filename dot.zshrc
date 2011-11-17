@@ -77,9 +77,8 @@ bindkey "^n" history-beginning-search-forward-end
 
 # prompt setting  
 typeset -ga chpwd_functions
-typeset -ga preexec_functions
-chpwd_functions+=_set_rprompt_git
-preexec_functions+=_set_rprompt_git
+chpwd_functions+=_set_prompt
+
 
 # Alias Settings
 alias v='vim'
