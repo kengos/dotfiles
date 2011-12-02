@@ -65,12 +65,17 @@ setopt transient_rprompt
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
-autoload history-search-end
 ## history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
-setopt extended_history
+setopt EXTENDED_HISTORY
+## history search
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
 
 # prompt setting  
 typeset -ga chpwd_functions
@@ -102,8 +107,8 @@ alias reload='source ~/.zshrc'
 alias be="bundle exec"
 alias bo="bundle open"
 
-if [ -e ~/.zshrc_specific ]; then
-  source ~/.zshrc_specific
+if [ -e ~/.zshrc.include ]; then
+  source ~/.zshrc.include
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
