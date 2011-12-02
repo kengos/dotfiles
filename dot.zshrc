@@ -58,22 +58,24 @@ setopt auto_menu
 setopt prompt_subst
 setopt prompt_percent
 setopt transient_rprompt
+
+#
+## history settings
+#
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=100000
+SAVEHIST=100000
+autoload history-search-end
 ## history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
 setopt extended_history
-# history settings
-histfile=$home/.zhistory
-histsize=100000
-savehist=100000
-autoload history-search-end
 
 # prompt setting  
 typeset -ga chpwd_functions
 chpwd_functions+=_set_left_prompt
 _set_prompt
-
 
 # Alias Settings
 alias v='vim'
