@@ -66,10 +66,9 @@ HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
 ## history
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
 setopt share_history
 setopt EXTENDED_HISTORY
+function history-all { history -E 1 }
 ## history search
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -86,6 +85,7 @@ _set_prompt
 alias v='vim'
 alias g="git"
 alias gb="git branch"
+alias history="history -ni"
 
 # ls options
 case "${OSTYPE}" in
