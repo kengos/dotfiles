@@ -105,9 +105,6 @@ highlight PmenuSel ctermbg=Blue guibg=RoyalBlue
 highlight PmenuSbar ctermbg=LightGray guibg=LightGray
 highlight PmenuThumb ctermbg=White guibg=White
 
-" 挿入モード時、paste オプションを解除する
-autocmd InsertLeave * set nopaste
-
 " 以前開いていたときのカーソル位置を復元する
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
@@ -126,6 +123,8 @@ autocmd WinEnter * call s:HighlightSpaces()
 " 挿入モード時、ステータスラインの色を変える
 autocmd InsertEnter * highlight StatusLine ctermfg=red
 autocmd InsertLeave * highlight StatusLine ctermfg=white
+" 挿入モード時、paste オプションを解除する
+autocmd InsertLeave * set nopaste
 
 " 自動的に QuickFix リストを表示する
 autocmd QuickFixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
