@@ -23,8 +23,8 @@ system/logs/
 .project
 *.pydevproject
 Servers
-bin
-target
+bin/*
+target/*
 .springBeans
 # Netbeans
 build
