@@ -2,6 +2,9 @@
 thumbs.db
 .DS_Store
 .localized
+# sublime
+*.sublime-workspace
+*.sublime-project
 # textmate
 *.tmproj
 *.tmproject

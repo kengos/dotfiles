@@ -14,3 +14,5 @@ alias tf='tail -f'
 alias psa='ps aux'
 alias java='java -Dfile.encoding=UTF-8'
 alias javac='javac -J-Dfile.encoding=utf-8'
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
