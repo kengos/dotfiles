@@ -4,7 +4,7 @@ IRB.conf.update(
   :HISTORY_FILE => "#{ENV['HOME']}/.irb_history"
 )
 
-%w(irb/completion pp rubygems wirb).each do |l|
+%w(pp rubygems).each do |l|
   begin
     require l
   rescue LoadError
@@ -18,12 +18,12 @@ class Object
   end
 end
 
-begin
-  # @see http://route477.net/d/?date=20110421
-  Wirb.schema = {
-    :string => :white
-  }
-  Wirb.start
-rescue
-  puts $!
-end
+#begin
+#  # @see http://route477.net/d/?date=20110421
+#  Wirb.schema = {
+#    :string => :white
+#  }
+#  Wirb.start
+#rescue
+#  puts $!
+#end
