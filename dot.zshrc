@@ -88,7 +88,7 @@ _set_prompt
 alias v='vim'
 alias g="git"
 alias gb="git branch"
-alias history="history -ni"
+alias beg='bundle exec guard'
 
 # ls options
 case "${OSTYPE}" in
