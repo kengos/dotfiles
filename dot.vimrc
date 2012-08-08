@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-set runtimepath+=~/.vim/bundle/vundle/
+set runtimepath+=~/dotfiles/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
