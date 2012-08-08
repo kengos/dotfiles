@@ -50,6 +50,7 @@ export CC=gcc-4.2
 #export PHP_VERSIONS=$HOME/local/php/versions
 #source $(brew --prefix php-version)/php-version.sh && php-version 5.4.0 >/dev/null
 export APACHE_PATH=$(brew --prefix httpd)
+export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
 
 # option
 setopt auto_pushd
@@ -112,12 +113,10 @@ alias psa='ps aux'
 alias reload='source ~/.zshrc'
 alias be="bundle exec"
 alias bo="bundle open"
+alias zf="~/lib/zend/1.11.12/bin/zf.sh"
 
 if [ -e ~/.zshrc.include ]; then
   source ~/.zshrc.include
 fi
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
