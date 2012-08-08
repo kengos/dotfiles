@@ -47,6 +47,9 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export EDITOR='vim'
 export LANG='ja_JP.UTF-8'
 export CC=gcc-4.2
+export PHP_VERSIONS=$HOME/local/php/versions
+source $(brew --prefix php-version)/php-version.sh && php-version 5.4.0 >/dev/null
+export APACHE_PATH=$(brew --prefix httpd)
 
 # option
 setopt auto_pushd
@@ -118,3 +121,4 @@ fi
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+eval "$(rbenv init -)"
