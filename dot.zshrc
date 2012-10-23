@@ -46,11 +46,7 @@ export LS_COLORS='di=41:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export EDITOR='vim'
 export LANG='ja_JP.UTF-8'
-export CC=gcc-4.2
-#export PHP_VERSIONS=$HOME/local/php/versions
-#source $(brew --prefix php-version)/php-version.sh && php-version 5.4.0 >/dev/null
 export APACHE_PATH=$(brew --prefix httpd)
-export PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
 
 # option
 setopt auto_pushd
@@ -92,6 +88,7 @@ _set_prompt
 alias v='vim'
 alias g="git"
 alias gb="git branch"
+alias gs="git status"
 alias beg='bundle exec guard'
 
 # ls options
@@ -115,8 +112,8 @@ alias be="bundle exec"
 alias bo="bundle open"
 alias zf="~/lib/zend/1.11.12/bin/zf.sh"
 
-if [ -e ~/.zshrc.include ]; then
+if [ -e ~/.zshrc.nclude ]; then
   source ~/.zshrc.include
 fi
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH="/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.rvm/bin:$(brew --prefix josegonzalez/php/php54)/bin:" # Add RVM to PATH for scripting
