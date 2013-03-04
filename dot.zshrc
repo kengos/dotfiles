@@ -115,5 +115,5 @@ function _set_git_branch() {
   if [ -e ~/.zshrc.nclude ]; then
     source ~/.zshrc.include
   fi
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-PATH="/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.rvm/bin:$(brew --prefix josegonzalez/php/php54)/bin:" # Add RVM to PATH for scripting
+PATH="/usr/local/bin:/usr/local/sbin:$PATH:$(brew --prefix josegonzalez/php/php54)/bin:" # Add RVM to PATH for scripting
+eval "$(rbenv init -)"
