@@ -89,6 +89,7 @@ function _set_git_branch() {
   alias g="git"
   alias gb="git branch"
   alias gs="git status"
+  alias gg="git grep -H --heading --break"
   alias beg='bundle exec guard'
 
 # ls options
