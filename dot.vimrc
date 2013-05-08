@@ -30,7 +30,6 @@ endif
 " }}}
 
 " Programming {{{
-  " SQLUtilities : SQL整形、生成ユーティリティ
   NeoBundle 'SQLUtilities'
   NeoBundle 'vim-ruby/vim-ruby'
   NeoBundle 'tpope/vim-rails'
@@ -45,7 +44,6 @@ endif
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'scrooloose/syntastic'
 " }}}
-
 
 " Encording {{{
   NeoBundle 'banyan/recognize_charcode.vim'
@@ -81,7 +79,7 @@ set ignorecase
 set incsearch
 set laststatus=2
 set list
-set listchars=tab:»\ 
+set listchars=tab:»\
 set mouse=a
 set ttymouse=xterm2
 set nobackup
@@ -100,27 +98,6 @@ set visualbell t_vb=
 set wildmode=list:longest,list:full
 set expandtab tabstop=2 shiftwidth=2
 
-
-" 以前開いていたときのカーソル位置を復元する
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-" 全角空白と行末の空白の色を変える
-highlight WideSpace ctermbg=blue guibg=blue
-highlight EOLSpace ctermbg=red guibg=red
-
-function! s:HighlightSpaces()
-  syntax match WideSpace /　/ containedin=ALL
-  syntax match EOLSpace /\s\+$/ containedin=ALL
-endf
-
-call s:HighlightSpaces()
-autocmd WinEnter * call s:HighlightSpaces()
-
-" 挿入モード時、ステータスラインの色を変える
-autocmd InsertEnter * highlight StatusLine ctermfg=red
-autocmd InsertLeave * highlight StatusLine ctermfg=white
-autocmd InsertLeave * set nopaste
-
 " Plugins
 " NERD Commenter
 let g:NERDCreateDefaultMappings = 0
@@ -129,3 +106,26 @@ nmap <Leader>/ <Plug>NERDCommenterToggle
 vmap <Leader>/s <Plug>NERDCommenterSexy
 " NERD Tree
 map <C-n> :NERDTreeToggle<CR>
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_at_startup = 1
+
+scriptencoding utf-8
+augroup MyCommand
+  autocmd!
+
+  autocmd FileType * setlocal formatoptions-=ro
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  autocmd InsertEnter * highlight StatusLine ctermfg=red
+  autocmd InsertLeave * highlight StatusLine ctermfg=white
+  autocmd InsertEnter * set nopaste
+  autocmd VimEnter,ColorScheme * highlight ZenkakuSpace term=underline ctermbg=Red guibg=Red
+  autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+  " auto trailing whitespace
+  autocmd BufWritePre * :%s/\s\+$//e
+  " neocomplcache
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END

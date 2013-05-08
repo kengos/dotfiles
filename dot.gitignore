@@ -37,3 +37,4 @@ private
 .svn
 # rvm
 .rvmrc
+.rbenv-version
