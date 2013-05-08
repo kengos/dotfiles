@@ -8,21 +8,13 @@ endif
 
 " Edit {{{
   NeoBundle 'scrooloose/nerdcommenter.git'
-  NeoBundle 'c9s/cascading.vim'
-  NeoBundle 'nathanaelkane/vim-indent-guides'
   NeoBundle 'xmledit'
-  NeoBundle 'Align'
-  NeoBundle 'godlygeek/tabular'
-  NeoBundle 'h1mesuke/vim-alignta'
-  NeoBundle 'YankRing.vim'
   NeoBundle 'Gundo'
-  NeoBundle 'smartchr'
-  NeoBundle 'operator-user'
-  NeoBundle 'operator-replace'
 " }}}
 
 " Completion {{{
   NeoBundle 'Shougo/neocomplcache'
+  NeoBundle 'scrooloose/nerdtree.git'
   NeoBundle 'Shougo/neosnippet.git'
   NeoBundle 'honza/snipmate-snippets'
   NeoBundle 'm2ym/rsense'
@@ -30,13 +22,11 @@ endif
 " }}}
 
 " Searching/Moving{{{
-  NeoBundle 'yuroyoro/smooth_scroll.vim'
   NeoBundle 'smartword'
   NeoBundle 'matchit.zip'
   NeoBundle 'ruby-matchit'
   NeoBundle 'grep.vim'
   NeoBundle 'eregex.vim'
-  NeoBundle 'tyru/open-browser.vim'
 " }}}
 
 " Programming {{{
@@ -56,11 +46,6 @@ endif
   NeoBundle 'scrooloose/syntastic'
 " }}}
 
-" Buffer {{{
-  NeoBundle 'The-NERD-tree'
-  NeoBundle 'vtreeexplorer'
-" }}}
-
 
 " Encording {{{
   NeoBundle 'banyan/recognize_charcode.vim'
@@ -78,7 +63,7 @@ filetype plugin indent on
 
 syntax enable
 set background=dark
-colorscheme desert 
+colorscheme desert
 
 set encoding=utf-8
 set fileencodings=utf-8,cp932,eucjp,iso2022jp,utf-16
@@ -98,6 +83,7 @@ set laststatus=2
 set list
 set listchars=tab:»\ 
 set mouse=a
+set ttymouse=xterm2
 set nobackup
 set nohlsearch
 set number
@@ -134,3 +120,12 @@ autocmd WinEnter * call s:HighlightSpaces()
 autocmd InsertEnter * highlight StatusLine ctermfg=red
 autocmd InsertLeave * highlight StatusLine ctermfg=white
 autocmd InsertLeave * set nopaste
+
+" Plugins
+" NERD Commenter
+let g:NERDCreateDefaultMappings = 0
+let NERDSpaceDelims = 1
+nmap <Leader>/ <Plug>NERDCommenterToggle
+vmap <Leader>/s <Plug>NERDCommenterSexy
+" NERD Tree
+map <C-n> :NERDTreeToggle<CR>

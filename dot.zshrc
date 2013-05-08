@@ -19,7 +19,7 @@ function _set_git_branch() {
   }
 
   function _set_left_prompt(){
-    PROMPT=$'[%n@%m] - [%F{magenta}%~%f%1(v| %F{green}%1v%f|)]`_set_git_branch`\n$ '
+    PROMPT=$'[%n] - [%F{magenta}%~%f%1(v| %F{green}%1v%f|)]`_set_git_branch`\n$ '
   }
 
   function _set_prompt() {
