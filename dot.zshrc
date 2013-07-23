@@ -79,7 +79,7 @@ function _set_git_branch() {
   bindkey "^P" history-beginning-search-backward-end
   bindkey "^N" history-beginning-search-forward-end
 
-# prompt setting  
+# prompt setting
   typeset -ga chpwd_functions
   chpwd_functions+=_set_left_prompt
   _set_prompt
@@ -116,5 +116,6 @@ function _set_git_branch() {
   if [ -e ~/.zshrc.nclude ]; then
     source ~/.zshrc.include
   fi
-PATH="/usr/local/bin:/usr/local/sbin:$PATH:$(brew --prefix josegonzalez/php/php54)/bin:" # Add RVM to PATH for scripting
+GOPATH=~/workspace/go/
+PATH="/usr/local/bin:/usr/local/sbin:$PATH:$(brew --prefix josegonzalez/php/php54)/bin:/usr/local/share/npm/bin:" # Add RVM to PATH for scripting
 eval "$(rbenv init -)"
