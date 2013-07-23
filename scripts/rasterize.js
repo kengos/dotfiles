@@ -1,3 +1,4 @@
+// Usage phantom.js rasterize URL filename [qiita]
 var page = require('webpage').create(),
     address, output, width, height, paperwidth, paperheight;
 
