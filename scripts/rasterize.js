@@ -10,6 +10,7 @@ if (phantom.args.length < 2) {
 address = phantom.args[0];
 output = phantom.args[1];
 type = phantom.args[2] !== undefined ? phantom.args[2] : 'default';
+console.log('type: ' + type);
 page.customHeaders = {
   'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36'
 };
