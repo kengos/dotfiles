@@ -27,5 +27,5 @@ cask install sublime-text
 cask install skype
 cask install clamxav
 cask install alfred
-
+cask install appzapper
 cleanup
