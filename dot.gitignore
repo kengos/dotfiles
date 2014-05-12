@@ -16,7 +16,7 @@ tmtags
 *~
 \#*
 .\#*
-# yardoc 
+# yardoc
 .yardoc
 # CodeIgniter
 system/logs/
@@ -26,7 +26,6 @@ system/logs/
 .project
 *.pydevproject
 Servers
-bin/*
 target/*
 .springBeans
 # Netbeans
