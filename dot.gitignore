@@ -18,8 +18,6 @@ tmtags
 .\#*
 # yardoc
 .yardoc
-# CodeIgniter
-system/logs/
 # Eclipse
 .settings
 .metadata
@@ -28,10 +26,6 @@ system/logs/
 Servers
 target/*
 .springBeans
-# Netbeans
-build
-dist
-private
 # SVN
 .svn
 # rvm

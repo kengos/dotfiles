@@ -117,7 +117,9 @@ function _set_git_branch() {
     source ~/.zshrc.include
   fi
 GOPATH=~/workspace/go/
-PATH="/usr/local/bin:/usr/local/sbin:$PATH:/usr/local/share/npm/bin:" # Add RVM to PATH for scripting
+source $(brew --prefix nvm)/nvm.sh
+PATH="$(brew --prefix homebrew/php/php54)/bin:/usr/local/bin:/usr/local/sbin:$PATH:"
 eval "$(rbenv init -)"
-#export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+nvm use default
 export JAVA_HOME="/Livrary/Java/Home"
+export NODE_PATH=${NVM_PATH}_modules
