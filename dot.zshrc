@@ -46,7 +46,6 @@ function _set_git_branch() {
   export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
   export EDITOR='vim'
   export LANG='ja_JP.UTF-8'
-  export APACHE_PATH=$(brew --prefix httpd)
 
 # option
   setopt auto_pushd
@@ -111,7 +110,6 @@ function _set_git_branch() {
   alias reload='source ~/.zshrc'
   alias be="bundle exec"
   alias bo="bundle open"
-  alias zf="~/lib/zend/1.11.12/bin/zf.sh"
 
   if [ -e ~/.zshrc.nclude ]; then
     source ~/.zshrc.include
