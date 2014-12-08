@@ -121,3 +121,5 @@ eval "$(rbenv init -)"
 nvm use default
 export JAVA_HOME="/Livrary/Java/Home"
 export NODE_PATH=${NVM_PATH}_modules
+# boot2docker
+export DOCKER_HOST=tcp://127.0.0.1:2375
