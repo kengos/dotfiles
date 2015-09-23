@@ -114,15 +114,19 @@ function _set_git_branch() {
   if [ -e ~/.zshrc.nclude ]; then
     source ~/.zshrc.include
   fi
+# PATH
+#export PATH="/bin:/usr/local/sbin:$PATH"
 # GO
 GOPATH=~/workspace/go/
 # NVM, Node
 source $(brew --prefix nvm)/nvm.sh
 export NODE_PATH=${NVM_PATH}_modules
-# PHP
-export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 # rbenv
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+# php56
+export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 # Java
 export JAVA_HOME="/Livrary/Java/Home"
 # boot2docker
