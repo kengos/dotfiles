@@ -1,3 +1,6 @@
+export LANG=ja_JP.UTF-8
+export LESSCHARSET=utf-8
+
 # Git function
 function _set_git_branch() {
   local git_branch st color
@@ -111,23 +114,26 @@ function _set_git_branch() {
   alias be="bundle exec"
   alias bo="bundle open"
 
-  if [ -e ~/.zshrc.nclude ]; then
-    source ~/.zshrc.include
-  fi
-# PATH
-#export PATH="/bin:/usr/local/sbin:$PATH"
-# GO
-GOPATH=~/workspace/go/
-# NVM, Node
-source $(brew --prefix nvm)/nvm.sh
-export NODE_PATH=${NVM_PATH}_modules
-# rbenv
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)"
+# --------------------------------------------------------
+# anyenv
+# --------------------------------------------------------
+if [ -d ${HOME}/.anyenv ] ; then
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
+  for D in `ls $HOME/.anyenv/envs`
+  do
+    export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+  done
 fi
-# php56
-export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
-# Java
-export JAVA_HOME="/Livrary/Java/Home"
+
+# --------------------------------------------------------
 # boot2docker
+# --------------------------------------------------------
 export DOCKER_HOST=tcp://127.0.0.1:2375
+
+# --------------------------------------------------------
+# local settings
+# --------------------------------------------------------
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi

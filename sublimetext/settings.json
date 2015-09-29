@@ -1,0 +1,15 @@
+{
+  "theme": "Material-Theme.sublime-theme",
+    "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "tab_size": 2,
+  "translate_tabs_to_spaces": false,
+  "trim_trailing_white_space_on_save": true,
+  "draw_white_space": "all",
+  "always_show_minimap_viewport": false,
+  "bold_folder_labels": true,
+  "draw_centered": false
+}

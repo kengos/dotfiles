@@ -1,3 +1,10 @@
+" --------------------------------------------
+" #### Usage
+" Ctrl + n => NERTTreeToggle
+" <Leader>/ => Togglecommentout
+"
+" --------------------------------------------
+
 set nocompatible
 filetype off
 
@@ -13,18 +20,12 @@ endif
 " }}}
 
 " Completion {{{
-  NeoBundle 'Shougo/neocomplcache'
+  NeoBundle 'kien/ctrlp.vim'
   NeoBundle 'scrooloose/nerdtree.git'
-  NeoBundle 'Shougo/neosnippet.git'
-  NeoBundle 'honza/snipmate-snippets'
   NeoBundle 'm2ym/rsense'
-  NeoBundle 'taichouchou2/vim-rsense'
 " }}}
 
 " Searching/Moving{{{
-  NeoBundle 'smartword'
-  NeoBundle 'matchit.zip'
-  NeoBundle 'ruby-matchit'
   NeoBundle 'grep.vim'
   NeoBundle 'eregex.vim'
 " }}}
