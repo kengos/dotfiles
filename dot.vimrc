@@ -16,7 +16,6 @@ endif
 " Edit {{{
   NeoBundle 'scrooloose/nerdcommenter.git'
   NeoBundle 'xmledit'
-  NeoBundle 'Gundo'
 " }}}
 
 " Completion {{{
@@ -48,10 +47,6 @@ endif
 
 " Encording {{{
   NeoBundle 'banyan/recognize_charcode.vim'
-" }}}
-
-" Utility {{{
-  NeoBundle 'L9'
 " }}}
 
 " ColorSchema{{{{
@@ -107,6 +102,8 @@ nmap <Leader>/ <Plug>NERDCommenterToggle
 vmap <Leader>/s <Plug>NERDCommenterSexy
 " NERD Tree
 map <C-n> :NERDTreeToggle<CR>
+" Gundo
+" nnoremap <Leader><F5> :GundoToggle<CR>
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
 
