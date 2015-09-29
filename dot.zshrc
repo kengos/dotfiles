@@ -93,6 +93,7 @@ function _set_git_branch() {
   alias gs="git status"
   alias gg="git grep -H --heading --break"
   alias beg='bundle exec guard'
+  alias gpull="git pull --rebase"
 
 # ls options
   case "${OSTYPE}" in
