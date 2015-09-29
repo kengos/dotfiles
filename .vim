@@ -1,0 +1,1 @@
+/Users/kengos/dotfiles/dot.vim
