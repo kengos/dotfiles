@@ -1,5 +1,8 @@
 export LANG=ja_JP.UTF-8
 export LESSCHARSET=utf-8
+export FONTCONFIG_PATH=/opt/X11/lib/X11/fontconfig
+export EDITOR=atom
+eval "$(direnv hook zsh)"
 
 # Git function
 function _set_git_branch() {
@@ -57,7 +60,8 @@ function _set_git_branch() {
   setopt list_packed
   setopt auto_menu
   setopt equals
-## prompt
+  setopt print_eight_bit
+  setopt no_beep
   setopt prompt_subst
   setopt prompt_percent
   setopt transient_rprompt
@@ -72,7 +76,9 @@ function _set_git_branch() {
   setopt share_history
   setopt hist_ignore_dups
   setopt hist_ignore_space
-  setopt EXTENDED_HISTORY
+  setopt hist_reduce_blanks
+  setopt hist_ignore_all_dups
+  setopt pushd_ignore_dups
   function history-all { history -E 1 }
 ## history search
   autoload history-search-end
@@ -80,6 +86,7 @@ function _set_git_branch() {
   zle -N history-beginning-search-forward-end history-search-end
   bindkey "^P" history-beginning-search-backward-end
   bindkey "^N" history-beginning-search-forward-end
+  bindkey '^R' history-incremental-pattern-search-backward
 
 # prompt setting
   typeset -ga chpwd_functions
@@ -92,12 +99,11 @@ function _set_git_branch() {
   alias gb="git branch"
   alias gs="git status"
   alias gg="git grep -H --heading --break"
-  alias beg='bundle exec guard'
-  alias gpull="git pull --rebase"
 
 # ls options
   case "${OSTYPE}" in
-    freebsd*|darwin*)
+    darwin*)
+      alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
       alias ls='ls -G'
       ;;
     linux*)
@@ -116,21 +122,13 @@ function _set_git_branch() {
   alias bo="bundle open"
 
 # --------------------------------------------------------
-# anyenv
+# *env
 # --------------------------------------------------------
-if [ -d ${HOME}/.anyenv ] ; then
-  export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init -)"
-  for D in `ls $HOME/.anyenv/envs`
-  do
-    export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-  done
-fi
-
-# --------------------------------------------------------
-# boot2docker
-# --------------------------------------------------------
-export DOCKER_HOST=tcp://127.0.0.1:2375
+export PATH="/usr/local/sbin:$HOME/.rbenv/bin:$HOME/.ndenv/bin:$HOME:/.pyenv/bin:$HOME:/.goenv/bin:$PATH:"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which ndenv > /dev/null; then eval "$(ndenv init -)"; fi
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
 # --------------------------------------------------------
 # local settings

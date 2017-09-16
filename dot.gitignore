@@ -20,6 +20,7 @@ tmtags
 .yardoc
 # Eclipse
 .settings
+.byebug_history
 .metadata
 .project
 *.pydevproject
@@ -31,3 +32,9 @@ target/*
 # rvm
 .rvmrc
 .rbenv-version
+.tags
+.tags1
+.envrc
+.ruby-version
+node_modules
+tsconfig.json
