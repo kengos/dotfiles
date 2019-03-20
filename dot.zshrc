@@ -1,7 +1,6 @@
 export LANG=ja_JP.UTF-8
 export LESSCHARSET=utf-8
-export FONTCONFIG_PATH=/opt/X11/lib/X11/fontconfig
-export EDITOR=atom
+export EDITOR=vim
 eval "$(direnv hook zsh)"
 
 # Git function
@@ -50,8 +49,6 @@ function _set_git_branch() {
   autoload colors; colors
   export LS_COLORS='di=41:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
   export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-  export EDITOR='vim'
-  export LANG='ja_JP.UTF-8'
 
 # option
   setopt auto_pushd
@@ -103,7 +100,6 @@ function _set_git_branch() {
 # ls options
   case "${OSTYPE}" in
     darwin*)
-      alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
       alias ls='ls -G'
       ;;
     linux*)
@@ -118,17 +114,6 @@ function _set_git_branch() {
   alias tf='tail -f'
   alias psa='ps aux'
   alias reload='source ~/.zshrc'
-  alias be="bundle exec"
-  alias bo="bundle open"
-
-# --------------------------------------------------------
-# *env
-# --------------------------------------------------------
-export PATH="/usr/local/sbin:$HOME/.rbenv/bin:$HOME/.ndenv/bin:$HOME:/.pyenv/bin:$HOME:/.goenv/bin:$PATH:"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-if which ndenv > /dev/null; then eval "$(ndenv init -)"; fi
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
 # --------------------------------------------------------
 # local settings
